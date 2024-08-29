@@ -1,4 +1,4 @@
-package com.do55anto5.moviestreaming.ui.theme
+package com.do55anto5.moviestreaming.presenter.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
