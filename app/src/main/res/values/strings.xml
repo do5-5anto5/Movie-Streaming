@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Movie Streaming</string>
+    
+    <!-- Welcome Screen -->
+    <string name="welcome_slider_title">Bem vindo!</string>
+    <string name="welcome_slider_slide1">O melhor aplicativo do século para tornar seus dias incríveis!</string>
+    <string name="welcome_slider_slide2">Saiba tudo sobre seus filmes favoritos</string>
+    <string name="welcome_slider_slide3">Novidades de primeira!</string>
 </resources>
