@@ -4,6 +4,7 @@ import androidx.compose.ui.graphics.Color
 
 // Default
 val DefaultColor = Color(0xFFE21221)
+val DisabledDefaultColor = Color(0xFFc1232f)
 
 // Background
 val BackgroundColorLight = Color(0xFFFFFFFF)
