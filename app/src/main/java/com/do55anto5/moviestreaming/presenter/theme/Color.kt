@@ -10,6 +10,15 @@ val DisabledDefaultColor = Color(0xFFc1232f)
 val BackgroundColorLight = Color(0xFFFFFFFF)
 val BackgroundColorDark = Color(0xFF181A20)
 
+// Border
+val BorderColorLight = Color(0xFFEEEEEE)
+val BorderColorDark = Color(0xFF35383F)
+
+// Button -> Text
+val BackgroundSocialButtonColorLight = Color.Transparent
+val BackgroundSocialButtonColorDark = Color(0xFF1F222A)
+
+
 // Text
 val TextColorLight = Color(0xFF212121)
 val TextColorDark = Color(0xFFFFFFFF)
