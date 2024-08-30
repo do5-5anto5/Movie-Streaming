@@ -5,7 +5,9 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.Scaffold
@@ -16,7 +18,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.do55anto5.moviestreaming.R
+import com.do55anto5.moviestreaming.presenter.components.button.PrimaryButton
 import com.do55anto5.moviestreaming.presenter.components.slider.WelcomeSlideUI
 import com.do55anto5.moviestreaming.presenter.theme.MovieStreamingTheme
 
@@ -69,9 +73,26 @@ fun WelcomeContent() {
                             .align(Alignment.BottomCenter)
                     )
 
-                    WelcomeSlideUI(
-                        slideItems = slideItems,
-                        pagerState = pagerState
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        content = {
+
+                            WelcomeSlideUI(
+                                modifier = Modifier
+                                    .weight(1f),
+                                slideItems = slideItems,
+                                pagerState = pagerState
+                            )
+
+                            PrimaryButton(
+                                modifier = Modifier
+                                    .padding(start = 24.dp, end = 24.dp, bottom = 24.dp),
+                                text = stringResource(id = R.string.welcome_button_continue),
+                                isLoading = false,
+                                onClick = {}
+                            )
+                        }
                     )
                 }
             )
