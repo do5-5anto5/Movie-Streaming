@@ -48,6 +48,8 @@ fun WelcomeContent() {
     }
 
     Scaffold (
+        modifier = Modifier
+            .fillMaxSize(),
         content = { paddingValues ->
 
             Box(modifier = Modifier
