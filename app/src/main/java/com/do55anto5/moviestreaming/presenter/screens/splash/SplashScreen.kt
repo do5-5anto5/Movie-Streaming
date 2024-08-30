@@ -1,4 +1,4 @@
-package com.do55anto5.moviestreaming.presenter
+package com.do55anto5.moviestreaming.presenter.screens.splash
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -18,7 +18,7 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.do55anto5.moviestreaming.R
-import com.do55anto5.moviestreaming.ui.theme.MovieStreamingTheme
+import com.do55anto5.moviestreaming.presenter.theme.MovieStreamingTheme
 
 @Composable
 fun SplashScreen(modifier: Modifier = Modifier) {
