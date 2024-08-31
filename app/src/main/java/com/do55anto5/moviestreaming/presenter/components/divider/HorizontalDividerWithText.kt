@@ -1,9 +1,9 @@
 package com.do55anto5.moviestreaming.presenter.components.divider
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.HorizontalDivider
@@ -15,7 +15,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.do55anto5.moviestreaming.R
@@ -34,7 +34,7 @@ fun HorizontalDividerWithText(
             HorizontalDivider(
                 modifier = Modifier
                     .weight(1f),
-                color = MovieStreamingTheme.colorScheme.greyscale200Color
+                color = MovieStreamingTheme.colorScheme.dividerColor
             )
 
             Text(
@@ -55,24 +55,26 @@ fun HorizontalDividerWithText(
             HorizontalDivider(
                 modifier = Modifier
                     .weight(1f),
-                color = MovieStreamingTheme.colorScheme.greyscale200Color
+                color = MovieStreamingTheme.colorScheme.dividerColor
             )
         }
     )
 }
 
-@Preview(showBackground = true)
+@PreviewLightDark
 @Composable
 private fun HorizontalDividerWithTextPreview() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        HorizontalDividerWithText(
-            text = "ou"
-        )
+    MovieStreamingTheme {
+        Column(
+            modifier = Modifier
+                .background(MovieStreamingTheme.colorScheme.backgroundColor)
+                .padding(16.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            HorizontalDividerWithText(
+                text = "ou"
+            )
+        }
     }
 }
