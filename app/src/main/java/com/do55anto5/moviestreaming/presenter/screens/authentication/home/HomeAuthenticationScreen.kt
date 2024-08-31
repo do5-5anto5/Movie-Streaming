@@ -36,6 +36,7 @@ fun HomeAuthenticationScreen() {
 @Composable
 fun HomeAuthenticationContent() {
     Scaffold(
+        containerColor = MovieStreamingTheme.colorScheme.backgroundColor,
         content = { paddingValues ->
             Column(
                 modifier = Modifier
@@ -118,5 +119,7 @@ fun HomeAuthenticationContent() {
 @PreviewLightDark
 @Composable
 private fun HomeAuthenticationScreenPreview() {
-    HomeAuthenticationContent()
+    MovieStreamingTheme {
+        HomeAuthenticationContent()
+    }
 }
