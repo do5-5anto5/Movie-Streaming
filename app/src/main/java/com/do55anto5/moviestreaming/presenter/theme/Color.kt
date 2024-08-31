@@ -14,6 +14,10 @@ val BackgroundColorDark = Color(0xFF181A20)
 val BorderColorLight = Color(0xFFEEEEEE)
 val BorderColorDark = Color(0xFF35383F)
 
+// HorizontalDivider
+val DividerColorLight = Color(0xFFEEEEEE)
+val DividerColorDark = Color(0xFF35383F)
+
 // Button -> Text
 val BackgroundSocialButtonColorLight = Color.Transparent
 val BackgroundSocialButtonColorDark = Color(0xFF1F222A)
