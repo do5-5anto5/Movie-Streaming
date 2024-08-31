@@ -47,6 +47,12 @@ fun PrimaryButton(
         onClick = onClick,
         modifier = modifier
             .fillMaxWidth()
+            .shadow(
+                shape = RoundedCornerShape(100.dp),
+                elevation = 16.dp,
+                spotColor = MovieStreamingTheme.colorScheme.defaultColor,
+                ambientColor = MovieStreamingTheme.colorScheme.defaultColor,
+            )
             .height(58.dp),
         enabled = enabled && !isLoading,
         colors = ButtonDefaults.buttonColors(
