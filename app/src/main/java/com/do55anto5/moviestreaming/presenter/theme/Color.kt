@@ -5,6 +5,7 @@ import androidx.compose.ui.graphics.Color
 // Default
 val DefaultColor = Color(0xFFE21221)
 val DisabledDefaultColor = Color(0xFFc1232f)
+val AlphaDefaultColor = Color(0x14E21221)
 
 // Background
 val BackgroundColorLight = Color(0xFFFFFFFF)
@@ -21,6 +22,10 @@ val DividerColorDark = Color(0xFF35383F)
 // TopAppBar
 val TopAppBarColorLight = Color(0xFF212121)
 val TopAppBarColorDark = Color(0xFFffffff)
+
+// TextField
+val TextFieldBackGroundColorLight = Color(0xFFfafafa)
+val TextFieldBackGroundColorDark = Color(0xFF1F222A)
 
 // Button -> Text
 val BackgroundSocialButtonColorLight = Color.Transparent
