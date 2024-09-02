@@ -18,6 +18,10 @@ val BorderColorDark = Color(0xFF35383F)
 val DividerColorLight = Color(0xFFEEEEEE)
 val DividerColorDark = Color(0xFF35383F)
 
+// TopAppBar
+val TopAppBarColorLight = Color(0xFF212121)
+val TopAppBarColorDark = Color(0xFFffffff)
+
 // Button -> Text
 val BackgroundSocialButtonColorLight = Color.Transparent
 val BackgroundSocialButtonColorDark = Color(0xFF1F222A)
@@ -57,3 +61,4 @@ val Greyscale50Color = Color(0xFFFAFAFA)
 // Others
 val WhiteColor = Color(0xFFFFFFFF)
 val BlackColor = Color(0xFF000000)
+val TransparentColor = Color(0x00000000)

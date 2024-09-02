@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,6 +30,7 @@ import com.do55anto5.moviestreaming.R
 import com.do55anto5.moviestreaming.presenter.components.button.PrimaryButton
 import com.do55anto5.moviestreaming.presenter.components.button.SocialButton
 import com.do55anto5.moviestreaming.presenter.components.divider.HorizontalDividerWithText
+import com.do55anto5.moviestreaming.presenter.components.topAppBar.TopAppBarUI
 import com.do55anto5.moviestreaming.presenter.theme.MovieStreamingTheme
 import com.do55anto5.moviestreaming.presenter.theme.UrbanistFamily
 
@@ -39,85 +42,85 @@ fun HomeAuthenticationScreen() {
 @Composable
 fun HomeAuthenticationContent() {
     Scaffold(
+        topBar = {
+            TopAppBarUI(
+                onClick = {}
+            )
+        },
         containerColor = MovieStreamingTheme.colorScheme.backgroundColor,
         content = { paddingValues ->
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(paddingValues),
+                    .verticalScroll(rememberScrollState())
+                    .padding(paddingValues)
+                    .padding(24.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
                 content = {
-                    Column(
+                    Image(
+                        painter = painterResource(id = R.drawable.placeholder_home_authentication),
+                        contentDescription = null
+                    )
+
+                    Spacer(modifier = Modifier.height(24.dp))
+
+                    Text(
+                        text = stringResource(id = R.string.label_title_authentication_screen),
+                        style = TextStyle(
+                            fontSize = 48.sp,
+                            lineHeight = 57.6.sp,
+                            fontFamily = UrbanistFamily,
+                            fontWeight = FontWeight.Bold,
+                            color = MovieStreamingTheme.colorScheme.textColor,
+                            textAlign = TextAlign.Center
+                        )
+                    )
+
+                    Spacer(modifier = Modifier.height(24.dp))
+
+                    SocialButton(
                         modifier = Modifier
-                            .weight(1f)
-                            .padding(24.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        content = {
-                            Image(
-                                painter = painterResource(id = R.drawable.placeholder_home_authentication),
-                                contentDescription = null
-                            )
+                            .fillMaxWidth(),
+                        icon = painterResource(id = R.drawable.ic_google),
+                        isLoading = false,
+                        text = "Continue with Google",
+                        onClick = {}
+                    )
 
-                            Spacer(modifier = Modifier.height(24.dp))
+                    Spacer(modifier = Modifier.height(16.dp))
 
-                            Text(
-                                text = stringResource(id = R.string.label_title_authentication_screen),
-                                style = TextStyle(
-                                    fontSize = 48.sp,
-                                    lineHeight = 57.6.sp,
-                                    fontFamily = UrbanistFamily,
-                                    fontWeight = FontWeight.Bold,
-                                    color = MovieStreamingTheme.colorScheme.textColor,
-                                    textAlign = TextAlign.Center
-                                )
-                            )
+                    SocialButton(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        icon = painterResource(id = R.drawable.ic_facebook),
+                        isLoading = false,
+                        text = "Continue with Facebook",
+                        onClick = {}
+                    )
 
-                            Spacer(modifier = Modifier.height(24.dp))
+                    Spacer(modifier = Modifier.height(16.dp))
 
-                            SocialButton(
-                                modifier = Modifier
-                                    .fillMaxWidth(),
-                                icon = painterResource(id = R.drawable.ic_google),
-                                isLoading = false,
-                                text = "Continue with Google",
-                                onClick = {}
-                            )
+                    SocialButton(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        icon = painterResource(id = R.drawable.ic_github),
+                        isLoading = false,
+                        text = "Continue with Github",
+                        onClick = {}
+                    )
 
-                            Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(16.dp))
 
-                            SocialButton(
-                                modifier = Modifier
-                                    .fillMaxWidth(),
-                                icon = painterResource(id = R.drawable.ic_facebook),
-                                isLoading = false,
-                                text = "Continue with Facebook",
-                                onClick = {}
-                            )
+                    HorizontalDividerWithText(
+                        text = stringResource(id = R.string.label_or_authentication_screen)
+                    )
 
-                            Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(16.dp))
 
-                            SocialButton(
-                                modifier = Modifier
-                                    .fillMaxWidth(),
-                                icon = painterResource(id = R.drawable.ic_github),
-                                isLoading = false,
-                                text = "Continue with Github",
-                                onClick = {}
-                            )
-
-                            Spacer(modifier = Modifier.height(16.dp))
-
-                            HorizontalDividerWithText(
-                                text = stringResource(id = R.string.label_or_authentication_screen)
-                            )
-
-                            Spacer(modifier = Modifier.height(16.dp))
-
-                            PrimaryButton(
-                                text = stringResource(id = R.string.label_sign_with_password_authentication_screen),
-                                isLoading = false,
-                                onClick = {}
-                            )
-                        }
+                    PrimaryButton(
+                        text = stringResource(id = R.string.label_sign_with_password_authentication_screen),
+                        isLoading = false,
+                        onClick = {}
                     )
 
                     Spacer(modifier = Modifier.height(16.dp))
@@ -125,7 +128,7 @@ fun HomeAuthenticationContent() {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(24.dp),
+                            .padding(horizontal = 24.dp),
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.Center,
                         content = {
@@ -162,7 +165,6 @@ fun HomeAuthenticationContent() {
         }
     )
 }
-
 
 
 @PreviewLightDark
