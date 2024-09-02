@@ -37,7 +37,8 @@ private val LightColorScheme = MyColorScheme(
     greyscale100Color = Greyscale100Color,
     greyscale50Color = Greyscale50Color,
     whiteColor = WhiteColor,
-    blackColor = BlackColor
+    blackColor = BlackColor,
+    transparentColor = TransparentColor
 )
 
 private val DarkColorScheme = MyColorScheme(
@@ -67,7 +68,8 @@ private val DarkColorScheme = MyColorScheme(
     greyscale100Color = Greyscale100Color,
     greyscale50Color = Greyscale50Color,
     whiteColor = WhiteColor,
-    blackColor = BlackColor
+    blackColor = BlackColor,
+    transparentColor = TransparentColor
 )
 
 private val LocalColorScheme = compositionLocalOf { LightColorScheme }

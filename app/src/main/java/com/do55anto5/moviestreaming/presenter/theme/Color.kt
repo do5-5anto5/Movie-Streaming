@@ -61,3 +61,4 @@ val Greyscale50Color = Color(0xFFFAFAFA)
 // Others
 val WhiteColor = Color(0xFFFFFFFF)
 val BlackColor = Color(0xFF000000)
+val TransparentColor = Color(0x00000000)
