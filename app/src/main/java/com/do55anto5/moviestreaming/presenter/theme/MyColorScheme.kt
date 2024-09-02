@@ -4,11 +4,13 @@ import androidx.compose.ui.graphics.Color
 
 data class MyColorScheme(
     val defaultColor: Color,
+    val alphaDefaultColor: Color,
     val disabledDefaultColor: Color,
     val backgroundColor: Color,
     val borderColor: Color,
     val dividerColor: Color,
     val topAppBarColor: Color,
+    val textFieldBackGroundColor: Color,
     val backgroundSocialButtonColor: Color,
     val textColor: Color,
     val secondaryButtonColor: Color,
