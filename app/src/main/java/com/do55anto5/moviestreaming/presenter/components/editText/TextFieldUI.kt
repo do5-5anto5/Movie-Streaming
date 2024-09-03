@@ -115,7 +115,7 @@ fun TextFieldUI(
                 focusedLeadingIconColor = MovieStreamingTheme.colorScheme.blackColor,
                 errorLeadingIconColor = MovieStreamingTheme.colorScheme.defaultColor,
                 unfocusedTrailingIconColor = MovieStreamingTheme.colorScheme.greyscale500Color,
-                focusedTrailingIconColor = MovieStreamingTheme.colorScheme.blackColor,
+                focusedTrailingIconColor = MovieStreamingTheme.colorScheme.greyscale500Color,
                 errorTrailingIconColor = MovieStreamingTheme.colorScheme.defaultColor,
                 focusedPlaceholderColor = MovieStreamingTheme.colorScheme.greyscale500Color
             )
