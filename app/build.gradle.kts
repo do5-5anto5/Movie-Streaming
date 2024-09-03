@@ -59,10 +59,13 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    
+
+    // View Model
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+
     //Lottie
     implementation(libs.lottie.compose)
-    
+
     // Tests
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
