@@ -21,6 +21,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -38,12 +39,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.do55anto5.moviestreaming.R
+import com.do55anto5.moviestreaming.core.enums.InputType
 import com.do55anto5.moviestreaming.presenter.components.button.PrimaryButton
 import com.do55anto5.moviestreaming.presenter.components.button.SocialButton
 import com.do55anto5.moviestreaming.presenter.components.divider.HorizontalDividerWithText
 import com.do55anto5.moviestreaming.presenter.components.editText.TextFieldUI
 import com.do55anto5.moviestreaming.presenter.components.topAppBar.TopAppBarUI
+import com.do55anto5.moviestreaming.presenter.screens.authentication.signup.action.SignupAction
+import com.do55anto5.moviestreaming.presenter.screens.authentication.signup.state.SignupState
+import com.do55anto5.moviestreaming.presenter.screens.authentication.signup.viewmodel.SignupViewModel
 import com.do55anto5.moviestreaming.presenter.theme.MovieStreamingTheme
 import com.do55anto5.moviestreaming.presenter.theme.UrbanistFamily
 
@@ -51,18 +57,24 @@ import com.do55anto5.moviestreaming.presenter.theme.UrbanistFamily
 fun SignupScreen(
     onBackPressed: () -> Unit
 ) {
+
+    val viewModel: SignupViewModel = viewModel()
+    val state = viewModel.state.collectAsState().value
+
     SignupContent(
+        state = state,
+        action = viewModel::submitAction,
         onBackPressed = { }
     )
 }
 
 @Composable
 fun SignupContent(
+    state: SignupState = SignupState(),
+    action: (SignupAction) -> Unit,
     onBackPressed: () -> Unit
 ) {
 
-    var emailValue by remember { mutableStateOf("") }
-    var passwordValue by remember { mutableStateOf("") }
     var showPassword by remember { mutableStateOf(false) }
 
     Scaffold(
@@ -107,7 +119,7 @@ fun SignupContent(
                     // EMAIL INPUT FIELD
                     TextFieldUI(
                         modifier = Modifier,
-                        value = emailValue,
+                        value = state.email,
                         label = stringResource(R.string.label_input_email_signup_screen),
                         placeholder = stringResource(R.string.placeholder_input_email_signup_screen),
                         mLeadingIcon = {
@@ -121,7 +133,12 @@ fun SignupContent(
                             keyboardType = KeyboardType.Email
                         ),
                         onValueChange = {
-                            emailValue = it
+                            action(
+                                SignupAction.OnValueChange(
+                                    value = it,
+                                    type = InputType.EMAIL
+                                )
+                            )
                         }
                     )
 
@@ -130,16 +147,16 @@ fun SignupContent(
                     // PASSWORD INPUT FIELD
                     TextFieldUI(
                         modifier = Modifier,
-                        value = passwordValue,
+                        value = state.password,
                         label = stringResource(R.string.label_input_password_signup_screen),
                         placeholder = stringResource(R.string.placeholder_input_password_signup_screen),
                         // PASSWORD MASK
                         visualTransformation =
-                            if (showPassword) {
-                                VisualTransformation.None
-                            } else {
-                                PasswordVisualTransformation()
-                            },
+                        if (showPassword) {
+                            VisualTransformation.None
+                        } else {
+                            PasswordVisualTransformation()
+                        },
                         mLeadingIcon = {
                             Icon(
                                 painter = painterResource(R.drawable.ic_password),
@@ -148,12 +165,12 @@ fun SignupContent(
                             )
                         },
                         mTrailingIcon = {
-                            IconButton(
-                                onClick = {
-                                    showPassword = !showPassword
-                                },
-                                content = {
-                                    if (passwordValue.isNotEmpty()) {
+                            if (state.password.isNotEmpty()) {
+                                IconButton(
+                                    onClick = {
+                                        showPassword = !showPassword
+                                    },
+                                    content = {
                                         Icon(
                                             painter =
                                             if (showPassword) {
@@ -164,14 +181,19 @@ fun SignupContent(
                                             contentDescription = null,
                                         )
                                     }
-                                }
-                            )
+                                )
+                            }
                         },
                         keyboardOptions = KeyboardOptions(
                             keyboardType = KeyboardType.Email
                         ),
                         onValueChange = {
-                            passwordValue = it
+                            action(
+                                SignupAction.OnValueChange(
+                                    value = it,
+                                    type = InputType.PASSWORD
+                                )
+                            )
                         }
                     )
 
@@ -265,6 +287,11 @@ fun SignupContent(
 @Composable
 private fun SignupScreenPreview() {
     MovieStreamingTheme {
-        SignupContent(onBackPressed = {})
+
+        SignupContent(
+            state = SignupState(),
+            action = {},
+            onBackPressed = {}
+        )
     }
 }
