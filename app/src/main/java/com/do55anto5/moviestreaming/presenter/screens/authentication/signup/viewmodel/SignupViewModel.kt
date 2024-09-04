@@ -18,6 +18,10 @@ class SignupViewModel : ViewModel() {
             is SignupAction.OnValueChange -> {
                 onValueChange(action.value, action.type)
             }
+
+            is SignupAction.OnPasswordVisibilityChange -> {
+                onPasswordVisibilityChange()
+            }
         }
     }
 
@@ -45,4 +49,12 @@ class SignupViewModel : ViewModel() {
             currentState.copy(password = value)
         }
     }
+
+    private fun onPasswordVisibilityChange() {
+        _state.update { currentState ->
+            currentState.copy(passwordVisibility = !currentState.passwordVisibility)
+        }
+
+    }
+
 }
