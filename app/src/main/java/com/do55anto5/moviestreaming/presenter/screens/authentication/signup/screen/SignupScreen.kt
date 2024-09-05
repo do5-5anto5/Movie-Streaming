@@ -28,6 +28,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -124,7 +125,8 @@ fun SignupContent(
                             )
                         },
                         keyboardOptions = KeyboardOptions(
-                            keyboardType = KeyboardType.Email
+                            keyboardType = KeyboardType.Email,
+                            imeAction = ImeAction.Next
                         ),
                         onValueChange = {
                             action(
@@ -179,7 +181,8 @@ fun SignupContent(
                             }
                         },
                         keyboardOptions = KeyboardOptions(
-                            keyboardType = KeyboardType.Email
+                            keyboardType = KeyboardType.Email,
+                            imeAction = ImeAction.Done
                         ),
                         onValueChange = {
                             action(
@@ -196,7 +199,7 @@ fun SignupContent(
                     PrimaryButton(
                         text = stringResource(R.string.label_button_signup_screen),
                         isLoading = false,
-                        enabled = true,
+                        enabled = state.enableSignupButton,
                         onClick = {}
                     )
 

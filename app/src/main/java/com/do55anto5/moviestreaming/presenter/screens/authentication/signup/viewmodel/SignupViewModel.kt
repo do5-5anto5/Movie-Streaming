@@ -2,6 +2,7 @@ package com.do55anto5.moviestreaming.presenter.screens.authentication.signup.vie
 
 import androidx.lifecycle.ViewModel
 import com.do55anto5.moviestreaming.core.enums.InputType
+import com.do55anto5.moviestreaming.core.functions.isValidEmail
 import com.do55anto5.moviestreaming.presenter.screens.authentication.signup.action.SignupAction
 import com.do55anto5.moviestreaming.presenter.screens.authentication.signup.state.SignupState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -35,6 +36,8 @@ class SignupViewModel : ViewModel() {
                 onPasswordChange(value)
             }
         }
+
+        enableSignupButton()
     }
 
 
@@ -54,7 +57,15 @@ class SignupViewModel : ViewModel() {
         _state.update { currentState ->
             currentState.copy(passwordVisibility = !currentState.passwordVisibility)
         }
+    }
 
+    private fun enableSignupButton() {
+        val emailValid = isValidEmail(_state.value.email)
+        val passwordValid = _state.value.password.isNotBlank()
+
+        _state.update { currentState ->
+            currentState.copy(enableSignupButton = emailValid && passwordValid)
+        }
     }
 
 }
