@@ -61,6 +61,9 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
+    // Koin
+    implementation(libs.koin.compose)
+
     // View Model
     implementation(libs.androidx.lifecycle.viewmodel.compose)
 
