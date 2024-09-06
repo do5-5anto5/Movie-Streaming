@@ -155,7 +155,7 @@ fun SignupContent(
                         },
                         mLeadingIcon = {
                             Icon(
-                                painter = painterResource(R.drawable.ic_password),
+                                painter = painterResource(R.drawable.ic_password_mine),
                                 contentDescription = null,
                                 tint = MovieStreamingTheme.colorScheme.greyscale500Color
                             )
