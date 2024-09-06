@@ -3,13 +3,16 @@ package com.do55anto5.moviestreaming.presenter.screens.authentication.signup.vie
 import androidx.lifecycle.ViewModel
 import com.do55anto5.moviestreaming.core.enums.InputType
 import com.do55anto5.moviestreaming.core.functions.isValidEmail
+import com.do55anto5.moviestreaming.domain.remote.usecase.authentication.RegisterUseCase
 import com.do55anto5.moviestreaming.presenter.screens.authentication.signup.action.SignupAction
 import com.do55anto5.moviestreaming.presenter.screens.authentication.signup.state.SignupState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
-class SignupViewModel : ViewModel() {
+class SignupViewModel(
+    private val registerUseCase: RegisterUseCase
+) : ViewModel() {
 
     private val _state = MutableStateFlow(SignupState())
     val state = _state.asStateFlow()
