@@ -1,6 +1,7 @@
 package com.do55anto5.moviestreaming.presenter.screens.authentication.signup.viewmodel
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.do55anto5.moviestreaming.core.enums.InputType
 import com.do55anto5.moviestreaming.core.functions.isValidEmail
 import com.do55anto5.moviestreaming.domain.remote.usecase.authentication.RegisterUseCase
@@ -9,6 +10,7 @@ import com.do55anto5.moviestreaming.presenter.screens.authentication.signup.stat
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 
 class SignupViewModel(
     private val registerUseCase: RegisterUseCase
@@ -26,6 +28,19 @@ class SignupViewModel(
             is SignupAction.OnPasswordVisibilityChange -> {
                 onPasswordVisibilityChange()
             }
+
+            is SignupAction.OnSignup -> {
+                onSignup()
+            }
+        }
+    }
+
+    private fun onSignup() {
+        viewModelScope.launch {
+            registerUseCase(
+                email = _state.value.email,
+                password = _state.value.password
+            )
         }
     }
 
@@ -42,7 +57,6 @@ class SignupViewModel(
 
         enableSignupButton()
     }
-
 
     private fun onEmailChange(value: String) {
         _state.update { currentState ->
