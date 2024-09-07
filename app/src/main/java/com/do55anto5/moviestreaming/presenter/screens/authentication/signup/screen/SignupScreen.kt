@@ -22,6 +22,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -56,7 +57,7 @@ fun SignupScreen(
 ) {
 
     val viewModel = koinViewModel<SignupViewModel>()
-    val state = viewModel.state.collectAsState().value
+    val state by viewModel.state.collectAsState()
 
     SignupContent(
         state = state,
@@ -200,7 +201,7 @@ fun SignupContent(
                         text = stringResource(R.string.label_button_signup_screen),
                         isLoading = false,
                         enabled = state.enableSignupButton,
-                        onClick = {}
+                        onClick = { action(SignupAction.OnSignup) }
                     )
 
                     Spacer(Modifier.height(20.dp))
