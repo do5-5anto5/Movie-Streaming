@@ -1,4 +1,4 @@
-package com.do55anto5.moviestreaming.domain.remote
+package com.do55anto5.moviestreaming.domain.remote.repository.authentication
 
 interface SignupRepository {
 
