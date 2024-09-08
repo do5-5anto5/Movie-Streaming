@@ -73,6 +73,7 @@ dependencies {
     // Firebase
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.authentication)
+    implementation(libs.firebase.realtime.database)
 
     // Tests
     testImplementation(libs.junit)

@@ -28,6 +28,7 @@ koin-compose = {module = "io.insert-koin:koin-androidx-compose", version.ref = "
 # Firebase
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebase-authentication = { module = "com.google.firebase:firebase-auth" }
+firebase-realtime-database = { module = "com.google.firebase:firebase-database"}
 
 # Compose
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
