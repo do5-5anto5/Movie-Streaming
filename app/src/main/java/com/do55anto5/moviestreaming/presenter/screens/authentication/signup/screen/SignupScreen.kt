@@ -38,7 +38,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.do55anto5.moviestreaming.R
-import com.do55anto5.moviestreaming.core.enums.InputType
+import com.do55anto5.moviestreaming.core.enums.input.InputType
 import com.do55anto5.moviestreaming.presenter.components.button.PrimaryButton
 import com.do55anto5.moviestreaming.presenter.components.button.SocialButton
 import com.do55anto5.moviestreaming.presenter.components.divider.HorizontalDividerWithText

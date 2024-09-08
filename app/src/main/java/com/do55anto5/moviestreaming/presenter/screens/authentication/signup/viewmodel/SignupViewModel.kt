@@ -2,7 +2,7 @@ package com.do55anto5.moviestreaming.presenter.screens.authentication.signup.vie
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.do55anto5.moviestreaming.core.enums.InputType
+import com.do55anto5.moviestreaming.core.enums.input.InputType
 import com.do55anto5.moviestreaming.core.functions.isValidEmail
 import com.do55anto5.moviestreaming.core.helper.FirebaseHelper
 import com.do55anto5.moviestreaming.domain.remote.model.User
