@@ -1,4 +1,4 @@
-package com.do55anto5.moviestreaming.data.remote
+package com.do55anto5.moviestreaming.data.remote.repository.authentication
 
 import com.do55anto5.moviestreaming.domain.remote.repository.authentication.SignupRepository
 import com.google.firebase.auth.FirebaseAuth
