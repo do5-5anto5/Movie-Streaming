@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.do55anto5.moviestreaming.core.enums.InputType
 import com.do55anto5.moviestreaming.core.functions.isValidEmail
+import com.do55anto5.moviestreaming.core.helper.FirebaseHelper
 import com.do55anto5.moviestreaming.domain.remote.usecase.authentication.RegisterUseCase
 import com.do55anto5.moviestreaming.presenter.screens.authentication.signup.action.SignupAction
 import com.do55anto5.moviestreaming.presenter.screens.authentication.signup.state.SignupState
@@ -37,10 +38,21 @@ class SignupViewModel(
 
     private fun onSignup() {
         viewModelScope.launch {
-            registerUseCase(
-                email = _state.value.email,
-                password = _state.value.password
-            )
+            try {
+                registerUseCase(
+                    email = _state.value.email,
+                    password = _state.value.password
+                )
+            } catch (exception: Exception) {
+                exception.printStackTrace()
+
+                _state.update { currentState ->
+                    currentState.copy(
+                        hasError = true,
+                        errorMessage = FirebaseHelper.validateError(exception.message)
+                    )
+                }
+            }
         }
     }
 
