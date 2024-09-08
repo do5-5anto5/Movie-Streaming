@@ -1,9 +1,18 @@
 package com.do55anto5.moviestreaming.core.helper
 
 import com.do55anto5.moviestreaming.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
 class FirebaseHelper {
     companion object {
+
+        fun getAuth() = FirebaseAuth.getInstance()
+
+        fun getDatabase() = FirebaseDatabase.getInstance().reference
+
+        fun getUserId() = getAuth().currentUser?.uid.orEmpty()
+
         fun validateError(error: String?): Int {
             return when {
 
@@ -24,5 +33,6 @@ class FirebaseHelper {
                 }
             }
         }
+
     }
 }
