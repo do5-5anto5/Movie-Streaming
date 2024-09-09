@@ -2,6 +2,7 @@ package com.do55anto5.moviestreaming.presenter.screens.authentication.signup.vie
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.do55anto5.moviestreaming.core.enums.feedback.FeedbackType
 import com.do55anto5.moviestreaming.core.enums.input.InputType
 import com.do55anto5.moviestreaming.core.functions.isValidEmail
 import com.do55anto5.moviestreaming.core.helper.FirebaseHelper
@@ -36,6 +37,10 @@ class SignupViewModel(
             is SignupAction.OnSignup -> {
                 onSignup()
             }
+
+            is SignupAction.ResetErrorState -> {
+                resetErrorState()
+            }
         }
     }
 
@@ -53,7 +58,10 @@ class SignupViewModel(
                 _state.update { currentState ->
                     currentState.copy(
                         hasError = true,
-                        errorMessage = FirebaseHelper.validateError(exception.message)
+                        feedbackUI = Pair(
+                            FeedbackType.ERROR,
+                            FirebaseHelper.validateError(exception.message)
+                        )
                     )
                 }
             }
@@ -98,6 +106,15 @@ class SignupViewModel(
 
         _state.update { currentState ->
             currentState.copy(enableSignupButton = emailValid && passwordValid)
+        }
+    }
+
+    private fun resetErrorState() {
+        _state.update { currentState ->
+            currentState.copy(
+                hasError = false,
+                feedbackUI = null
+            )
         }
     }
 
