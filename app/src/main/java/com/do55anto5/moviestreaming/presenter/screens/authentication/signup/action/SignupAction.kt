@@ -1,6 +1,6 @@
 package com.do55anto5.moviestreaming.presenter.screens.authentication.signup.action
 
-import com.do55anto5.moviestreaming.core.enums.InputType
+import com.do55anto5.moviestreaming.core.enums.input.InputType
 
 sealed class SignupAction {
 

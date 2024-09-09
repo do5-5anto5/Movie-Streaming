@@ -45,9 +45,9 @@ val SecondaryButtonTextColorLight = Color(0xFFE21221)
 val SecondaryButtonTextColorDark = Color(0xFFFFFFFF)
 
 // Alert & Status
-val SuccessColor = Color(0xFF4ADE80)
+val SuccessColor = Color(0xFF4aaf57)
 val InfoColor = Color(0xFF246BFD)
-val WarningColor = Color(0xFFFACC15)
+val WarningColor = Color(0xFFff981f)
 val ErrorColor = Color(0xFFF75555)
 val DisabledColor = Color(0xFFD8D8D8)
 
