@@ -12,4 +12,6 @@ sealed class SignupAction {
     data object OnPasswordVisibilityChange: SignupAction()
 
     data object OnSignup: SignupAction()
+
+    data object ResetErrorState: SignupAction()
 }
