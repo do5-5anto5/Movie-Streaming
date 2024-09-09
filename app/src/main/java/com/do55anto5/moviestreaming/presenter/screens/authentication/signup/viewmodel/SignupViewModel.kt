@@ -37,6 +37,10 @@ class SignupViewModel(
             is SignupAction.OnSignup -> {
                 onSignup()
             }
+
+            is SignupAction.ResetErrorState -> {
+                resetErrorState()
+            }
         }
     }
 
@@ -102,6 +106,15 @@ class SignupViewModel(
 
         _state.update { currentState ->
             currentState.copy(enableSignupButton = emailValid && passwordValid)
+        }
+    }
+
+    private fun resetErrorState() {
+        _state.update { currentState ->
+            currentState.copy(
+                hasError = false,
+                feedbackUI = null
+            )
         }
     }
 
