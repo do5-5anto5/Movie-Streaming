@@ -86,8 +86,8 @@ fun LoginContent(
     val scope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
 
-    LaunchedEffect(state.hasError) {
-        if (state.hasError) {
+    LaunchedEffect(state.hasFeedback) {
+        if (state.hasFeedback) {
             scope.launch {
                 val result = snackbarHostState
                     .showSnackbar(
