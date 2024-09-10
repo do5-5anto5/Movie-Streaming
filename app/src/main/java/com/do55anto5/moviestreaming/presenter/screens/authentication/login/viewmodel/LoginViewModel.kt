@@ -6,6 +6,7 @@ import com.do55anto5.moviestreaming.core.enums.feedback.FeedbackType
 import com.do55anto5.moviestreaming.core.enums.input.InputType
 import com.do55anto5.moviestreaming.core.functions.isValidEmail
 import com.do55anto5.moviestreaming.core.helper.FirebaseHelper
+import com.do55anto5.moviestreaming.domain.remote.usecase.authentication.LoginUseCase
 import com.do55anto5.moviestreaming.presenter.screens.authentication.login.action.LoginAction
 import com.do55anto5.moviestreaming.presenter.screens.authentication.login.state.LoginState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,7 +14,9 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class LoginViewModel() : ViewModel() {
+class LoginViewModel(
+    private val loginUseCase: LoginUseCase
+) : ViewModel() {
 
     private val _state = MutableStateFlow(LoginState())
     val state = _state.asStateFlow()
@@ -41,13 +44,16 @@ class LoginViewModel() : ViewModel() {
     private fun onSignIn() {
         viewModelScope.launch {
             try {
-
+                loginUseCase(
+                    email = _state.value.email,
+                    password = _state.value.password
+                )
             } catch (exception: Exception) {
                 exception.printStackTrace()
 
                 _state.update { currentState ->
                     currentState.copy(
-                        hasError = true,
+                        hasFeedback = true,
                         feedbackUI = Pair(
                             FeedbackType.ERROR,
                             FirebaseHelper.validateError(exception.message)
@@ -102,7 +108,7 @@ class LoginViewModel() : ViewModel() {
     private fun resetErrorState() {
         _state.update { currentState ->
             currentState.copy(
-                hasError = false,
+                hasFeedback = false,
                 feedbackUI = null
             )
         }
