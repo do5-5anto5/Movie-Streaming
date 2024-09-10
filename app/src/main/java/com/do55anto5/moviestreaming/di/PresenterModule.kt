@@ -15,7 +15,7 @@ val presenterModule = module {
     }
 
     viewModel {
-        LoginViewModel()
+        LoginViewModel(loginUseCase = get())
     }
 
 }
