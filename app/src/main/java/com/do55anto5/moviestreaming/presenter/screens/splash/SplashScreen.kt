@@ -7,7 +7,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -19,14 +21,32 @@ import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.do55anto5.moviestreaming.R
 import com.do55anto5.moviestreaming.presenter.theme.MovieStreamingTheme
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Composable
-fun SplashScreen(modifier: Modifier = Modifier) {
-    SplashContent()
+fun SplashScreen(
+    navigateToWelcomeScreen: () -> Unit
+) {
+    val scope = rememberCoroutineScope()
+
+    LaunchedEffect(key1 = true) {
+        scope.launch {
+            delay(2000)
+            navigateToWelcomeScreen()
+        }
+    }
+
+    SplashContent(
+        navigateToWelcomeScreen = navigateToWelcomeScreen
+    )
+
 }
 
 @Composable
-fun SplashContent() {
+private fun SplashContent(
+    navigateToWelcomeScreen: () -> Unit
+) {
 
     val composition by rememberLottieComposition(LottieCompositionSpec.Asset("loading.json"))
 
@@ -65,5 +85,7 @@ fun SplashContent() {
 @Preview
 @Composable
 private fun SplashScreenView() {
-    SplashContent()
+    SplashContent(
+        navigateToWelcomeScreen = {}
+    )
 }
