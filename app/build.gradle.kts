@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.google.services)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -60,6 +61,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.navigation.compose)
 
     // Koin
     implementation(libs.koin.compose)
@@ -74,6 +76,9 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.authentication)
     implementation(libs.firebase.realtime.database)
+
+    // Serialization
+    implementation(libs.serialization.json)
 
     // Tests
     testImplementation(libs.junit)
