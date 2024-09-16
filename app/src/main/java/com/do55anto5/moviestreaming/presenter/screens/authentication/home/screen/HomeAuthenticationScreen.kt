@@ -1,7 +1,8 @@
-package com.do55anto5.moviestreaming.presenter.screens.authentication.home
+package com.do55anto5.moviestreaming.presenter.screens.authentication.home.screen
 
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -35,12 +36,21 @@ import com.do55anto5.moviestreaming.presenter.theme.MovieStreamingTheme
 import com.do55anto5.moviestreaming.presenter.theme.UrbanistFamily
 
 @Composable
-fun HomeAuthenticationScreen() {
-    HomeAuthenticationContent()
+fun HomeAuthenticationScreen(
+    navigateToLoginScreen: () -> Unit,
+    navigateToSignupScreen: () -> Unit
+) {
+    HomeAuthenticationContent(
+        navigateToLoginScreen = navigateToLoginScreen,
+        navigateToSignupScreen = navigateToSignupScreen
+    )
 }
 
 @Composable
-fun HomeAuthenticationContent() {
+private fun HomeAuthenticationContent(
+    navigateToLoginScreen: () -> Unit,
+    navigateToSignupScreen: () -> Unit
+) {
     Scaffold(
         topBar = {
             TopAppBarUI(
@@ -120,7 +130,7 @@ fun HomeAuthenticationContent() {
                     PrimaryButton(
                         text = stringResource(id = R.string.label_sign_with_password_authentication_screen),
                         isLoading = false,
-                        onClick = {}
+                        onClick = { navigateToLoginScreen() }
                     )
 
                     Spacer(modifier = Modifier.height(16.dp))
@@ -147,6 +157,8 @@ fun HomeAuthenticationContent() {
                             Spacer(modifier = Modifier.width(8.dp))
 
                             Text(
+                                modifier = Modifier
+                                    .clickable { navigateToSignupScreen() },
                                 text = stringResource(id = R.string.label_sign_up_authentication_screen),
                                 style = TextStyle(
                                     fontSize = 14.sp,
@@ -171,6 +183,9 @@ fun HomeAuthenticationContent() {
 @Composable
 private fun HomeAuthenticationScreenPreview() {
     MovieStreamingTheme {
-        HomeAuthenticationContent()
+        HomeAuthenticationContent(
+            navigateToLoginScreen = {},
+            navigateToSignupScreen = {}
+        )
     }
 }
