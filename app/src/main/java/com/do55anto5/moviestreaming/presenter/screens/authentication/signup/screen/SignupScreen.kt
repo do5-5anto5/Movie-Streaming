@@ -3,6 +3,7 @@ package com.do55anto5.moviestreaming.presenter.screens.authentication.signup.scr
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -62,6 +63,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun SignupScreen(
+    navigateToLoginScreen: () -> Unit,
     onBackPressed: () -> Unit
 ) {
 
@@ -71,14 +73,16 @@ fun SignupScreen(
     SignupContent(
         state = state,
         action = viewModel::submitAction,
-        onBackPressed = { }
+        navigateToLoginScreen = navigateToLoginScreen,
+        onBackPressed = onBackPressed
     )
 }
 
 @Composable
-fun SignupContent(
+private fun SignupContent(
     state: SignupState = SignupState(),
     action: (SignupAction) -> Unit,
+    navigateToLoginScreen: () -> Unit,
     onBackPressed: () -> Unit
 ) {
 
@@ -107,7 +111,7 @@ fun SignupContent(
     Scaffold(
         topBar = {
             TopAppBarUI(
-                onClick = {}
+                onClick = { onBackPressed() }
             )
         },
         snackbarHost = {
@@ -306,6 +310,8 @@ fun SignupContent(
                             Spacer(modifier = Modifier.width(8.dp))
 
                             Text(
+                                modifier = Modifier
+                                    .clickable { navigateToLoginScreen() },
                                 text = stringResource(id = R.string.label_sign_in_signup_screen),
                                 style = TextStyle(
                                     fontSize = 14.sp,
@@ -333,6 +339,7 @@ private fun SignupScreenPreview() {
         SignupContent(
             state = SignupState(),
             action = {},
+            navigateToLoginScreen = {},
             onBackPressed = {}
         )
     }
