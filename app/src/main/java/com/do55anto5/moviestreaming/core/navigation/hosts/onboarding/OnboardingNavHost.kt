@@ -1,4 +1,4 @@
-package com.do55anto5.moviestreaming.core.navigation.routes.hosts.onboarding
+package com.do55anto5.moviestreaming.core.navigation.hosts.onboarding
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController

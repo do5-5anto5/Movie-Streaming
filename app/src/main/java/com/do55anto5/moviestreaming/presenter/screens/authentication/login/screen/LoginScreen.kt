@@ -3,6 +3,7 @@ package com.do55anto5.moviestreaming.presenter.screens.authentication.login.scre
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -62,7 +63,8 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun LoginScreen(
-                onBackPressed: () -> Unit
+    navigateToSignupScreen: () -> Unit,
+    onBackPressed: () -> Unit
 ) {
 
     val viewModel = koinViewModel<LoginViewModel>()
@@ -71,14 +73,16 @@ fun LoginScreen(
     LoginContent(
         state = state,
         action = viewModel::submitAction,
-        onBackPressed = { }
+        navigateToSignupScreen = navigateToSignupScreen,
+        onBackPressed = onBackPressed
     )
 }
 
 @Composable
-fun LoginContent(
+private fun LoginContent(
     state: LoginState = LoginState(),
     action: (LoginAction) -> Unit,
+    navigateToSignupScreen: () -> Unit,
     onBackPressed: () -> Unit
 ) {
 
@@ -107,7 +111,7 @@ fun LoginContent(
     Scaffold(
         topBar = {
             TopAppBarUI(
-                onClick = {}
+                onClick = { onBackPressed() }
             )
         },
         snackbarHost = {
@@ -321,6 +325,8 @@ fun LoginContent(
                             Spacer(modifier = Modifier.width(8.dp))
 
                             Text(
+                                modifier = Modifier
+                                    .clickable { navigateToSignupScreen() },
                                 text = stringResource(id = R.string.label_sign_up_login_screen),
                                 style = TextStyle(
                                     fontSize = 14.sp,
@@ -348,6 +354,7 @@ private fun LoginScreenPreview() {
         LoginContent(
             state = LoginState(),
             action = {},
+            navigateToSignupScreen = {},
             onBackPressed = {}
         )
     }
