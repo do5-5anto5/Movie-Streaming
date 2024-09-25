@@ -1,7 +1,6 @@
 package com.do55anto5.moviestreaming.presenter.screens.welcome
 
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -25,13 +24,18 @@ import com.do55anto5.moviestreaming.presenter.components.slider.WelcomeSlideUI
 import com.do55anto5.moviestreaming.presenter.theme.MovieStreamingTheme
 
 @Composable
-fun WelcomeScreen() {
-    WelcomeContent()
+fun WelcomeScreen(
+    navigateToHomeAuthenticationScreen: () -> Unit
+) {
+    WelcomeContent(
+        navigateToHomeAuthenticationScreen = navigateToHomeAuthenticationScreen
+    )
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun WelcomeContent() {
+fun WelcomeContent(
+    navigateToHomeAuthenticationScreen: () -> Unit
+) {
 
     val slideItems = listOf(
         Pair(
@@ -90,7 +94,7 @@ fun WelcomeContent() {
                                     .padding(start = 24.dp, end = 24.dp, bottom = 24.dp),
                                 text = stringResource(id = R.string.welcome_button_continue),
                                 isLoading = false,
-                                onClick = {}
+                                onClick = { navigateToHomeAuthenticationScreen() }
                             )
                         }
                     )
@@ -103,5 +107,5 @@ fun WelcomeContent() {
 @Preview(showBackground = true)
 @Composable
 private fun WelcomeScreenPreview() {
-    WelcomeContent()
+    WelcomeContent( navigateToHomeAuthenticationScreen = {} )
 }
