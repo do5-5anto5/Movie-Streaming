@@ -4,8 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.do55anto5.moviestreaming.presenter.SplashScreen
-import com.do55anto5.moviestreaming.ui.theme.MovieStreamingTheme
+import androidx.navigation.compose.rememberNavController
+import com.do55anto5.moviestreaming.core.navigation.hosts.onboarding.OnboardingNavHost
+import com.do55anto5.moviestreaming.presenter.theme.MovieStreamingTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,7 +14,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MovieStreamingTheme {
-                SplashScreen()
+                OnboardingNavHost(navHostController = rememberNavController())
             }
         }
     }
