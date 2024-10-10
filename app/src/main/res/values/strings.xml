@@ -4,6 +4,13 @@
     <!--    Generic-->
     <string name="error_generic">Ocorreu um erro, por favor tente novamente mais tarde.</string>
 
+    <!--    BottomAppBar-->
+    <string name="label_home_bottom_app_bar">Home</string>
+    <string name="label_search_bottom_app_bar">Search</string>
+    <string name="label_favorite_bottom_app_bar">Favoritos</string>
+    <string name="label_download_bottom_app_bar">Download</string>
+    <string name="label_account_bottom_app_bar">Perfil</string>
+
     <!--    Firebase Authentication-->
     <string name="email_in_use_firebase_authentication">Este e-mail já está em uso.</string>
     <string name="strong_password_firebase_authentication">Insira uma senha mais forte.</string>
