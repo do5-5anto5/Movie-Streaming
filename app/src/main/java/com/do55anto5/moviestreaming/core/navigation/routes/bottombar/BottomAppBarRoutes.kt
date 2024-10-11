@@ -9,8 +9,6 @@ sealed class BottomAppBarRoutes {
     @Serializable
     data object Search : BottomAppBarRoutes()
     @Serializable
-    data object Profile : BottomAppBarRoutes()
-    @Serializable
     data object Favorite : BottomAppBarRoutes()
     @Serializable
     data object Download : BottomAppBarRoutes()

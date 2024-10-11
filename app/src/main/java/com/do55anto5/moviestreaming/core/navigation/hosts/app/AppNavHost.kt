@@ -8,7 +8,7 @@ import com.do55anto5.moviestreaming.presenter.screens.main.app.screen.AppScreen
 
 fun NavGraphBuilder.appNavHost() {
     navigation<AppRoutes.Graph>(
-        startDestination = AppRoutes.Graph
+        startDestination = AppRoutes.App
     ) {
         composable<AppRoutes.App> {
             AppScreen()
