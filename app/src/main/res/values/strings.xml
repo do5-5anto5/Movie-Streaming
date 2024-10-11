@@ -9,7 +9,7 @@
     <string name="label_search_bottom_app_bar">Search</string>
     <string name="label_favorite_bottom_app_bar">Favoritos</string>
     <string name="label_download_bottom_app_bar">Download</string>
-    <string name="label_account_bottom_app_bar">Perfil</string>
+    <string name="label_account_bottom_app_bar">Conta</string>
 
     <!--    Firebase Authentication-->
     <string name="email_in_use_firebase_authentication">Este e-mail já está em uso.</string>
