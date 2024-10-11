@@ -1,10 +1,11 @@
 package com.do55anto5.moviestreaming.core.navigation.hosts.bottombar
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.do55anto5.moviestreaming.core.navigation.bottombar.BottomAppBarItems
+import com.do55anto5.moviestreaming.core.navigation.routes.bottombar.BottomAppBarRoutes
 import com.do55anto5.moviestreaming.presenter.screens.main.account.screen.AccountScreen
 import com.do55anto5.moviestreaming.presenter.screens.main.download.screen.DownloadScreen
 import com.do55anto5.moviestreaming.presenter.screens.main.favorite.screen.FavoriteScreen
@@ -12,28 +13,32 @@ import com.do55anto5.moviestreaming.presenter.screens.main.home.screen.HomeScree
 import com.do55anto5.moviestreaming.presenter.screens.main.search.screen.SearchScreen
 
 @Composable
-fun BottomAppBarNavHost(navHostController: NavHostController) {
+fun BottomAppBarNavHost(
+    modifier: Modifier = Modifier,
+    navHostController: NavHostController
+) {
     NavHost(
         navController = navHostController,
-        startDestination = BottomAppBarItems.Home
+        startDestination = BottomAppBarRoutes.Home,
+        modifier = modifier
     ) {
-        composable<BottomAppBarItems.Home> {
+        composable<BottomAppBarRoutes.Home> {
             HomeScreen()
         }
 
-        composable<BottomAppBarItems.Search> {
+        composable<BottomAppBarRoutes.Search> {
             SearchScreen()
         }
 
-        composable<BottomAppBarItems.Favorite> {
+        composable<BottomAppBarRoutes.Favorite> {
             FavoriteScreen()
         }
 
-        composable<BottomAppBarItems.Download> {
+        composable<BottomAppBarRoutes.Download> {
             DownloadScreen()
         }
 
-        composable<BottomAppBarItems.Account> {
+        composable<BottomAppBarRoutes.Account> {
             AccountScreen()
         }
 
