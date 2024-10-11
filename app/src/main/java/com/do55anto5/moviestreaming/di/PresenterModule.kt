@@ -2,6 +2,11 @@ package com.do55anto5.moviestreaming.di
 
 import com.do55anto5.moviestreaming.presenter.screens.authentication.login.viewmodel.LoginViewModel
 import com.do55anto5.moviestreaming.presenter.screens.authentication.signup.viewmodel.SignupViewModel
+import com.do55anto5.moviestreaming.presenter.screens.main.account.viewmodel.AccountViewModel
+import com.do55anto5.moviestreaming.presenter.screens.main.download.viewmodel.DownloadViewModel
+import com.do55anto5.moviestreaming.presenter.screens.main.favorite.viewmodel.FavoriteViewModel
+import com.do55anto5.moviestreaming.presenter.screens.main.home.viewmodel.HomeViewModel
+import com.do55anto5.moviestreaming.presenter.screens.main.search.viewmodel.SearchViewModel
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
@@ -16,6 +21,26 @@ val presenterModule = module {
 
     viewModel {
         LoginViewModel(loginUseCase = get())
+    }
+
+    viewModel {
+        HomeViewModel()
+    }
+
+    viewModel {
+        SearchViewModel()
+    }
+
+    viewModel {
+        FavoriteViewModel()
+    }
+
+    viewModel {
+        DownloadViewModel()
+    }
+
+    viewModel {
+        AccountViewModel()
     }
 
 }
