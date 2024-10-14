@@ -7,10 +7,22 @@ import com.do55anto5.moviestreaming.presenter.screens.main.download.viewmodel.Do
 import com.do55anto5.moviestreaming.presenter.screens.main.favorite.viewmodel.FavoriteViewModel
 import com.do55anto5.moviestreaming.presenter.screens.main.home.viewmodel.HomeViewModel
 import com.do55anto5.moviestreaming.presenter.screens.main.search.viewmodel.SearchViewModel
+import com.do55anto5.moviestreaming.presenter.screens.splash.viewmodel.SplashViewModel
+import com.do55anto5.moviestreaming.presenter.screens.welcome.viewmodel.WelcomeViewModel
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
 val presenterModule = module {
+
+    viewModel {
+        SplashViewModel(
+            appPreferences = get()
+        )
+    }
+
+    viewModel {
+        WelcomeViewModel(appPreferences = get())
+    }
 
     viewModel {
         SignupViewModel(
