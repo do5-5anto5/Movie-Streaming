@@ -8,8 +8,8 @@ import com.do55anto5.moviestreaming.core.navigation.hosts.app.appNavHost
 import com.do55anto5.moviestreaming.core.navigation.hosts.authentication.authenticationNavHost
 import com.do55anto5.moviestreaming.core.navigation.routes.authentication.AuthenticationRoutes
 import com.do55anto5.moviestreaming.core.navigation.routes.onboarding.OnboardingRoutes
-import com.do55anto5.moviestreaming.presenter.screens.splash.SplashScreen
-import com.do55anto5.moviestreaming.presenter.screens.welcome.WelcomeScreen
+import com.do55anto5.moviestreaming.presenter.screens.splash.screen.SplashScreen
+import com.do55anto5.moviestreaming.presenter.screens.welcome.screen.WelcomeScreen
 
 @Composable
 fun OnboardingNavHost(navHostController: NavHostController) {
@@ -21,6 +21,13 @@ fun OnboardingNavHost(navHostController: NavHostController) {
             SplashScreen(
                 navigateToWelcomeScreen = {
                     navHostController.navigate(OnboardingRoutes.Welcome) {
+                        popUpTo(OnboardingRoutes.Splash) {
+                            inclusive = true
+                        }
+                    }
+                },
+                navigateToHomeAuthenticationScreen = {
+                    navHostController.navigate(AuthenticationRoutes.Graph) {
                         popUpTo(OnboardingRoutes.Splash) {
                             inclusive = true
                         }
