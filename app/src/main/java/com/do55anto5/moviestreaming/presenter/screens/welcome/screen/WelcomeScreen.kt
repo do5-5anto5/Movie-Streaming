@@ -1,4 +1,4 @@
-package com.do55anto5.moviestreaming.presenter.screens.welcome
+package com.do55anto5.moviestreaming.presenter.screens.welcome.screen
 
 
 import androidx.compose.foundation.Image
@@ -11,6 +11,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -21,20 +24,31 @@ import androidx.compose.ui.unit.dp
 import com.do55anto5.moviestreaming.R
 import com.do55anto5.moviestreaming.presenter.components.button.PrimaryButton
 import com.do55anto5.moviestreaming.presenter.components.slider.WelcomeSlideUI
+import com.do55anto5.moviestreaming.presenter.screens.welcome.action.WelcomeAction
+import com.do55anto5.moviestreaming.presenter.screens.welcome.viewmodel.WelcomeViewModel
 import com.do55anto5.moviestreaming.presenter.theme.MovieStreamingTheme
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun WelcomeScreen(
     navigateToHomeAuthenticationScreen: () -> Unit
 ) {
+    val viewModel = koinViewModel<WelcomeViewModel>()
+    val state by viewModel.state.collectAsState()
+    LaunchedEffect(state.nextScreen) {
+        if (state.nextScreen) {
+            navigateToHomeAuthenticationScreen()
+        }
+    }
+
     WelcomeContent(
-        navigateToHomeAuthenticationScreen = navigateToHomeAuthenticationScreen
+        action = viewModel::submitAction
     )
 }
 
 @Composable
 fun WelcomeContent(
-    navigateToHomeAuthenticationScreen: () -> Unit
+    action: (WelcomeAction) -> Unit,
 ) {
 
     val slideItems = listOf(
@@ -94,7 +108,7 @@ fun WelcomeContent(
                                     .padding(start = 24.dp, end = 24.dp, bottom = 24.dp),
                                 text = stringResource(id = R.string.welcome_button_continue),
                                 isLoading = false,
-                                onClick = { navigateToHomeAuthenticationScreen() }
+                                onClick = { action(WelcomeAction.OnNextScreen) }
                             )
                         }
                     )
@@ -107,5 +121,5 @@ fun WelcomeContent(
 @Preview(showBackground = true)
 @Composable
 private fun WelcomeScreenPreview() {
-    WelcomeContent( navigateToHomeAuthenticationScreen = {} )
+
 }
