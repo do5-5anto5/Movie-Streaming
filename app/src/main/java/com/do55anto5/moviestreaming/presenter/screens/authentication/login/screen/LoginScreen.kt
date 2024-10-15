@@ -64,11 +64,22 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun LoginScreen(
     navigateToSignupScreen: () -> Unit,
+    navigateToAppScreen: () -> Unit,
     onBackPressed: () -> Unit
 ) {
 
     val viewModel = koinViewModel<LoginViewModel>()
     val state by viewModel.state.collectAsState()
+
+    with (state) {
+        LaunchedEffect(isLoading, isAuthenticated) {
+            if (!isLoading) {
+                if(isAuthenticated) {
+                    navigateToAppScreen()
+                }
+            }
+        }
+    }
 
     LoginContent(
         state = state,

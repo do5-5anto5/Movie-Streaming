@@ -31,22 +31,26 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun SplashScreen(
     navigateToWelcomeScreen: () -> Unit,
+    navigateToAppScreen: () -> Unit,
     navigateToHomeAuthenticationScreen: () -> Unit
 ) {
     val viewModel = koinViewModel<SplashViewModel>()
     val state by viewModel.state.collectAsState()
     val scope = rememberCoroutineScope()
 
-    LaunchedEffect(state.isLoading, state.isWelcomeVisited) {
-        scope.launch {
-            delay(2000)
-            viewModel.submitAction(action = SplashAction.OnNextScreen)
-
-            if (!state.isLoading) {
-                if (state.isWelcomeVisited) {
-                    navigateToHomeAuthenticationScreen()
-                } else {
-                    navigateToWelcomeScreen()
+    with (state) {
+        LaunchedEffect(isLoading, isWelcomeVisited, isAuthenticated) {
+            scope.launch {
+                delay(2000)
+                viewModel.submitAction(action = SplashAction.OnNextScreen)
+                if (!isLoading) {
+                    if(isAuthenticated) {
+                        navigateToAppScreen()
+                    } else if (isWelcomeVisited) {
+                        navigateToHomeAuthenticationScreen()
+                    } else {
+                        navigateToWelcomeScreen()
+                    }
                 }
             }
         }
