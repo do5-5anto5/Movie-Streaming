@@ -33,9 +33,9 @@ fun SwitchUI(
             checkedThumbColor = MovieStreamingTheme.colorScheme.whiteColor,
             uncheckedThumbColor = MovieStreamingTheme.colorScheme.whiteColor,
             checkedTrackColor = MovieStreamingTheme.colorScheme.defaultColor,
-            uncheckedTrackColor = MovieStreamingTheme.colorScheme.switchInactiveBackgroundColor,
+            uncheckedTrackColor = MovieStreamingTheme.colorScheme.switchColor,
             checkedBorderColor = MovieStreamingTheme.colorScheme.defaultColor,
-            uncheckedBorderColor = MovieStreamingTheme.colorScheme.switchInactiveBackgroundColor
+            uncheckedBorderColor = MovieStreamingTheme.colorScheme.switchColor
         ),
         modifier = modifier
     )
