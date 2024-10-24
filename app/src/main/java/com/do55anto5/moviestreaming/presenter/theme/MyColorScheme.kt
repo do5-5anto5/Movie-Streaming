@@ -15,6 +15,8 @@ data class MyColorScheme(
     val textColor: Color,
     val secondaryButtonColor: Color,
     val secondaryButtonTextColor: Color,
+    val switchColor: Color,
+    val iconColor: Color,
     val successColor: Color,
     val infoColor: Color,
     val warningColor: Color,

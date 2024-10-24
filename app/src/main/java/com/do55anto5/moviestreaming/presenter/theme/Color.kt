@@ -44,6 +44,14 @@ val SecondaryButtonColorDark = Color(0xFF35383F)
 val SecondaryButtonTextColorLight = Color(0xFFE21221)
 val SecondaryButtonTextColorDark = Color(0xFFFFFFFF)
 
+// Switch
+val SwitchInactiveBackgroundColorLight = Color(0xFFEEEEEE)
+val SwitchInactiveBackgroundColorDark = Color(0xFF35383F)
+
+// Icon
+val IconColorLight = Color(0xFF212121)
+val IconColorDark = Color(0xFFFFFFFF)
+
 // Alert & Status
 val SuccessColor = Color(0xFF4aaf57)
 val InfoColor = Color(0xFF246BFD)
