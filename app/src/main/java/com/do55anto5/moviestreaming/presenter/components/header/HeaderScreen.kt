@@ -31,9 +31,8 @@ fun HeaderScreen(
     @StringRes title: Int
 ) {
     Row(
-        modifier =  Modifier
-            .fillMaxWidth()
-            .padding(vertical = 12.dp),
+        modifier =  modifier
+            .fillMaxWidth(),
         content = {
             Image(
                 painter = painterResource(R.drawable.logo),
