@@ -6,12 +6,12 @@ import com.do55anto5.moviestreaming.R
 import com.do55anto5.moviestreaming.core.enums.menu.MenuType
 
 sealed class MenuItems(
-    @DrawableRes icon: Int,
-    @StringRes label: Int,
-    type: MenuType
+    @DrawableRes val icon: Int,
+    @StringRes val label: Int,
+    val type: MenuType
 ) {
     data object EditProfile: MenuItems(
-        icon = R.drawable.ic_edit,
+        icon = R.drawable.ic_user_line,
         label = R.string.label_edit_account_screen,
         type = MenuType.EDIT_PROFILE
     )
