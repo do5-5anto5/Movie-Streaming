@@ -8,12 +8,12 @@ plugins {
 
 android {
     namespace = "com.do55anto5.moviestreaming"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.do55anto5.moviestreaming"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -71,6 +71,9 @@ dependencies {
 
     //Lottie
     implementation(libs.lottie.compose)
+
+    // Landscapist Coil
+    implementation(libs.landscapist.coil)
 
     // Firebase
     implementation(platform(libs.firebase.bom))
