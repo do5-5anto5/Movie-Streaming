@@ -35,11 +35,12 @@ import com.skydoves.landscapist.coil.CoilImage
 @Composable
 fun ImageUI(
     modifier: Modifier = Modifier,
-    imageModel: Any,
+    imageModel: Any? = null,
     previewPlaceholder: Painter? = null,
     contentScale: ContentScale = ContentScale.None,
     shape: Shape = RoundedCornerShape(12.dp),
     borderStroke: BorderStroke = BorderStroke(0.dp, MovieStreamingTheme.colorScheme.transparentColor),
+    isLoading: Boolean = false,
     onClick: () -> Unit = {}
 ) {
     val failureComposition by rememberLottieComposition(LottieCompositionSpec.Asset("error_loading_error.json"))
@@ -56,28 +57,30 @@ fun ImageUI(
         ),
         previewPlaceholder = previewPlaceholder,
         loading = {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(MovieStreamingTheme.colorScheme.backgroundColor),
-                content = {
-                    CircularProgressIndicator(
-                        modifier = Modifier
-                            .align(Alignment.Center),
-                        color = MovieStreamingTheme.colorScheme.defaultColor
-                    )
-                }
-            )
+               Box(
+                   modifier = Modifier
+                       .fillMaxSize()
+                       .background(MovieStreamingTheme.colorScheme.backgroundColor),
+                   content = {
+                       CircularProgressIndicator(
+                           modifier = Modifier
+                               .align(Alignment.Center),
+                           color = MovieStreamingTheme.colorScheme.defaultColor
+                       )
+                   }
+               )
         },
         failure = {
-            LottieAnimation(
-                composition = failureComposition,
-                modifier = Modifier
-                    .size(120.dp)
-                    .align(Alignment.BottomCenter),
-                iterations = LottieConstants.IterateForever,
-                maintainOriginalImageBounds = true
-            )
+            if (!isLoading) {
+                LottieAnimation(
+                    composition = failureComposition,
+                    modifier = Modifier
+                        .size(120.dp)
+                        .align(Alignment.BottomCenter),
+                    iterations = LottieConstants.IterateForever,
+                    maintainOriginalImageBounds = true
+                )
+            }
         }
     )
 }

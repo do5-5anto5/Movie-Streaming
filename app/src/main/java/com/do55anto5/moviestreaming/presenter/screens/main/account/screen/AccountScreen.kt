@@ -1,9 +1,9 @@
 package com.do55anto5.moviestreaming.presenter.screens.main.account.screen
 
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.do55anto5.moviestreaming.R
 import com.do55anto5.moviestreaming.core.enums.menu.MenuType
+import com.do55anto5.moviestreaming.domain.remote.model.User
 import com.do55anto5.moviestreaming.presenter.components.header.HeaderScreen
 import com.do55anto5.moviestreaming.presenter.components.image.ImageUI
 import com.do55anto5.moviestreaming.presenter.components.menu.MenuItemDarkModeUI
@@ -87,7 +88,8 @@ private fun AccountContent(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(
-                        top = paddingValues.calculateTopPadding()),
+                        top = paddingValues.calculateTopPadding()
+                    ),
                 contentPadding = PaddingValues(24.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
@@ -96,35 +98,45 @@ private fun AccountContent(
                     ImageUI(
                         modifier = Modifier
                             .size(200.dp),
-                        imageModel = R.drawable.logo,
+                        imageModel = state.user?.photo,
                         contentScale = ContentScale.Crop,
                         previewPlaceholder = painterResource(id = R.drawable.placeholder_welcome),
-                        shape = CircleShape
+                        shape = CircleShape,
+                        isLoading = state.isLoading
                     )
 
-                    Text(
-                        text = "Mock Name",
-                        style = TextStyle(
-                            fontSize = 20.sp,
-                            lineHeight = 24.sp,
-                            fontFamily = UrbanistFamily,
-                            fontWeight = FontWeight.Bold,
-                            color = MovieStreamingTheme.colorScheme.textColor,
-                            textAlign = TextAlign.Center
-                        )
-                    )
+                    Spacer(modifier = Modifier.size(12.dp))
 
-                    Text(
-                        text = "mock@email.com",
-                        style = TextStyle(
-                            fontSize = 14.sp,
-                            lineHeight = 19.6.sp,
-                            fontFamily = UrbanistFamily,
-                            fontWeight = FontWeight.SemiBold,
-                            color = MovieStreamingTheme.colorScheme.textColor,
-                            textAlign = TextAlign.Center
+                    if (state.user?.name?.isNotEmpty() == true &&
+                        state.user.surname?.isNotEmpty() == true) {
+                        Text(
+                            text = "${state.user.name} ${state.user.surname}",
+                            style = TextStyle(
+                                fontSize = 20.sp,
+                                lineHeight = 24.sp,
+                                fontFamily = UrbanistFamily,
+                                fontWeight = FontWeight.Bold,
+                                color = MovieStreamingTheme.colorScheme.textColor,
+                                textAlign = TextAlign.Center
+                            )
                         )
-                    )
+                    }
+
+                    Spacer(modifier = Modifier.size(12.dp))
+
+                    if (state.user?.email?.isNotEmpty() == true) {
+                        Text(
+                            text = state.user.email,
+                            style = TextStyle(
+                                fontSize = 14.sp,
+                                lineHeight = 19.6.sp,
+                                fontFamily = UrbanistFamily,
+                                fontWeight = FontWeight.SemiBold,
+                                color = MovieStreamingTheme.colorScheme.textColor,
+                                textAlign = TextAlign.Center
+                            )
+                        )
+                    }
                 }
                 items(MenuItems.items()) { item ->
                     when     (item.type) {
@@ -161,7 +173,13 @@ private fun AccountContent(
 @Composable
 private fun AccountScreenPreview() {
     AccountContent(
-        state = AccountState(),
+        state = AccountState(
+            user = User(
+                name = "Mock Name",
+                surname = " Surname",
+                email = "mock@email.com"
+            )
+        ),
         action = {},
         onItemClick = {}
     )
