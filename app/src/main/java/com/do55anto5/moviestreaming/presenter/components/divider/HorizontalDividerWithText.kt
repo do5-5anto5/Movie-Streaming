@@ -65,7 +65,7 @@ private fun HorizontalDividerWithTextPreview() {
     MovieStreamingTheme {
         Column(
             modifier = Modifier
-                .background(MovieStreamingTheme.colorScheme.backgroundColor)
+                .background(MovieStreamingTheme.colorScheme.primaryBackgroundColor)
                 .padding(16.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
