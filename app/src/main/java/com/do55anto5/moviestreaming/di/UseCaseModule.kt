@@ -2,6 +2,7 @@ package com.do55anto5.moviestreaming.di
 
 import com.do55anto5.moviestreaming.domain.remote.usecase.authentication.LoginUseCase
 import com.do55anto5.moviestreaming.domain.remote.usecase.authentication.RegisterUseCase
+import com.do55anto5.moviestreaming.domain.remote.usecase.user.GetUserUseCase
 import com.do55anto5.moviestreaming.domain.remote.usecase.user.SaveUserUseCase
 import org.koin.dsl.module
 
@@ -12,5 +13,7 @@ val useCaseModule = module {
     factory { LoginUseCase(repository = get()) }
 
     factory { SaveUserUseCase(repository = get()) }
+
+    factory { GetUserUseCase(repository = get()) }
 
 }

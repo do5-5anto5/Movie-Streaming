@@ -10,15 +10,35 @@ class UserRepositoryImpl : UserRepository {
     private val usersReference =
         FirebaseHelper.getDatabase()
             .child("users")
-            .child(FirebaseHelper.getUserId())
 
     override suspend fun saveUser(user: User) {
         return suspendCoroutine { continuation ->
             usersReference
+                .child(FirebaseHelper.getUserId())
                 .setValue(user)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         continuation.resumeWith(Result.success(Unit))
+                    } else {
+                        task.exception?.let { exception ->
+                            continuation.resumeWith(Result.failure(exception))
+                        }
+                    }
+                }
+        }
+    }
+
+    override suspend fun getUser(): User {
+        return suspendCoroutine { continuation ->
+            usersReference
+                .child(FirebaseHelper.getUserId())
+                .get()
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val user = task.result.getValue(User::class.java)
+                        user?.let {
+                            continuation.resumeWith(Result.success(it))
+                        }
                     } else {
                         task.exception?.let { exception ->
                             continuation.resumeWith(Result.failure(exception))
