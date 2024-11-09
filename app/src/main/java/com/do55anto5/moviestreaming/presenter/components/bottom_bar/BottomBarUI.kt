@@ -33,6 +33,6 @@ fun BottomBarUI(
         },
         modifier = modifier
             .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)),
-        containerColor = MovieStreamingTheme.colorScheme.backgroundColor
+        containerColor = MovieStreamingTheme.colorScheme.primaryBackgroundColor
     )
 }

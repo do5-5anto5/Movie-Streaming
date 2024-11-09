@@ -73,7 +73,7 @@ private fun BottomAppBarItemUIPreview() {
                 }
             },
             modifier = Modifier,
-            containerColor = MovieStreamingTheme.colorScheme.backgroundColor
+            containerColor = MovieStreamingTheme.colorScheme.primaryBackgroundColor
         )
     }
 }

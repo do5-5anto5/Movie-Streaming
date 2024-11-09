@@ -43,7 +43,7 @@ private fun AppContent() {
         content = { paddingValues ->
             BottomAppBarNavHost(
              modifier = Modifier
-                 .background(MovieStreamingTheme.colorScheme.backgroundColor)
+                 .background(MovieStreamingTheme.colorScheme.primaryBackgroundColor)
                  .padding(paddingValues),
              navHostController = navController
             )

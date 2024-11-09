@@ -82,7 +82,7 @@ private fun AccountContent(
                 title = R.string.label_account_bottom_app_bar
             )
         },
-        containerColor = MovieStreamingTheme.colorScheme.backgroundColor,
+        containerColor = MovieStreamingTheme.colorScheme.primaryBackgroundColor,
         content = { paddingValues ->
             LazyColumn(
                 modifier = Modifier

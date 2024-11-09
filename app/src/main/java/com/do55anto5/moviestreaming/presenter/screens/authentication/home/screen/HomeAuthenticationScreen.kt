@@ -57,7 +57,7 @@ private fun HomeAuthenticationContent(
                 onClick = {}
             )
         },
-        containerColor = MovieStreamingTheme.colorScheme.backgroundColor,
+        containerColor = MovieStreamingTheme.colorScheme.primaryBackgroundColor,
         content = { paddingValues ->
             Column(
                 modifier = Modifier
