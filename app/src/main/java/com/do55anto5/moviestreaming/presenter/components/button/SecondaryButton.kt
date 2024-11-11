@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
@@ -17,7 +16,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -33,7 +31,7 @@ import com.do55anto5.moviestreaming.presenter.theme.MovieStreamingTheme
 import com.do55anto5.moviestreaming.presenter.theme.UrbanistFamily
 
 @Composable
-fun PrimaryButton(
+fun SecondaryButton(
     modifier: Modifier = Modifier,
     text: String,
     enabled: Boolean = true,
@@ -47,16 +45,10 @@ fun PrimaryButton(
         onClick = onClick,
         modifier = modifier
             .fillMaxWidth()
-            .shadow(
-                shape = CircleShape,
-                elevation = 16.dp,
-                spotColor = MovieStreamingTheme.colorScheme.spotColor,
-                ambientColor = MovieStreamingTheme.colorScheme.ambientColor,
-            )
             .height(58.dp),
         enabled = enabled && !isLoading,
         colors = ButtonDefaults.buttonColors(
-            containerColor = MovieStreamingTheme.colorScheme.defaultColor,
+            containerColor = MovieStreamingTheme.colorScheme.secondaryButtonColor,
             disabledContainerColor = MovieStreamingTheme.colorScheme.disabledDefaultColor
         ),
         content = {
@@ -77,7 +69,7 @@ fun PrimaryButton(
                         lineHeight = 22.4.sp,
                         fontFamily = UrbanistFamily,
                         fontWeight = FontWeight.Bold,
-                        color = MovieStreamingTheme.colorScheme.whiteColor,
+                        color = MovieStreamingTheme.colorScheme.secondaryButtonTextColor,
                         textAlign = TextAlign.Center,
                         letterSpacing = 0.2.sp
                     )
@@ -99,7 +91,7 @@ private fun PrimaryButtonPreview() {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            PrimaryButton(
+            SecondaryButton(
                 text = "Continue",
                 isLoading = false,
                 enabled = true,

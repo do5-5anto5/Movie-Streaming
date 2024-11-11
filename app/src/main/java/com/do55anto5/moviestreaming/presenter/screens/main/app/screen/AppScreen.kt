@@ -11,7 +11,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.do55anto5.moviestreaming.core.navigation.hosts.bottombar.BottomAppBarNavHost
-import com.do55anto5.moviestreaming.presenter.components.bottom_bar.BottomBarUI
+import com.do55anto5.moviestreaming.presenter.components.bottom.bar.BottomBarUI
 import com.do55anto5.moviestreaming.presenter.theme.MovieStreamingTheme
 
 @Composable

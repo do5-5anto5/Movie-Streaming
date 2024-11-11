@@ -1,4 +1,4 @@
-package com.do55anto5.moviestreaming.presenter.components.bottom_bar
+package com.do55anto5.moviestreaming.presenter.components.bottom.bar
 
 
 import androidx.compose.foundation.shape.RoundedCornerShape
