@@ -14,7 +14,7 @@ private val LightColorScheme = MyColorScheme(
     defaultColor = DefaultColor,
     alphaDefaultColor = AlphaDefaultColor,
     disabledDefaultColor = DisabledDefaultColor,
-    primaryBackgroundColor = SecondaryBackgroundColorLight,
+    primaryBackgroundColor = PrimaryBackgroundColorLight,
     secondaryBackgroundColor = SecondaryBackgroundColorLight,
     borderColor = BorderColorLight,
     dividerColor = DividerColorLight,
@@ -43,14 +43,16 @@ private val LightColorScheme = MyColorScheme(
     greyscale50Color = Greyscale50Color,
     whiteColor = WhiteColor,
     blackColor = BlackColor,
-    transparentColor = TransparentColor
+    transparentColor = TransparentColor,
+    spotColor = SpotColor,
+    ambientColor = AmbientColor
 )
 
 private val DarkColorScheme = MyColorScheme(
     defaultColor = DefaultColor,
     alphaDefaultColor = AlphaDefaultColor,
     disabledDefaultColor = DisabledDefaultColor,
-    primaryBackgroundColor = SecondaryBackgroundColorDark,
+    primaryBackgroundColor = PrimaryBackgroundColorDark,
     secondaryBackgroundColor = SecondaryBackgroundColorDark,
     borderColor = BorderColorDark,
     dividerColor = DividerColorDark,
@@ -79,7 +81,9 @@ private val DarkColorScheme = MyColorScheme(
     greyscale50Color = Greyscale50Color,
     whiteColor = WhiteColor,
     blackColor = BlackColor,
-    transparentColor = TransparentColor
+    transparentColor = TransparentColor,
+    spotColor = SpotColor,
+    ambientColor = AmbientColor
 )
 
 private val LocalColorScheme = compositionLocalOf { LightColorScheme }

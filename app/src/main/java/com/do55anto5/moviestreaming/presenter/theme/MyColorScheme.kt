@@ -35,5 +35,7 @@ data class MyColorScheme(
     val greyscale50Color: Color,
     val whiteColor: Color,
     val blackColor: Color,
-    val transparentColor: Color
+    val transparentColor: Color,
+    val spotColor: Color,
+    val ambientColor: Color
 )
