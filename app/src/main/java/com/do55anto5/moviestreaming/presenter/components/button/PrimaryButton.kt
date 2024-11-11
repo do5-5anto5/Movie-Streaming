@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
@@ -48,10 +48,10 @@ fun PrimaryButton(
         modifier = modifier
             .fillMaxWidth()
             .shadow(
-                shape = RoundedCornerShape(100.dp),
+                shape = CircleShape,
                 elevation = 16.dp,
-                spotColor = MovieStreamingTheme.colorScheme.defaultColor,
-                ambientColor = MovieStreamingTheme.colorScheme.defaultColor,
+                spotColor = MovieStreamingTheme.colorScheme.spotColor,
+                ambientColor = MovieStreamingTheme.colorScheme.ambientColor,
             )
             .height(58.dp),
         enabled = enabled && !isLoading,
